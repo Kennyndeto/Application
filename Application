@@ -1,0 +1,67 @@
+```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RadioButtonDemo extends JFrame implements ActionListener {
+    JRadioButton birdButton, catButton, dogButton, rabbitButton, pigButton;
+    JLabel selectedPetLabel;
+
+    public RadioButtonDemo() {
+        setTitle("Pet Selection");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        birdButton = new JRadioButton("Bird");
+        catButton = new JRadioButton("Cat");
+        dogButton = new JRadioButton("Dog");
+        rabbitButton = new JRadioButton("Rabbit");
+        pigButton = new JRadioButton("Pig");
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(birdButton);
+        group.add(catButton);
+        group.add(dogButton);
+        group.add(rabbitButton);
+        group.add(pigButton);
+
+        selectedPetLabel = new JLabel("Selected Pet: ");
+
+        birdButton.addActionListener(this);
+        catButton.addActionListener(this);
+        dogButton.addActionListener(this);
+        rabbitButton.addActionListener(this);
+        pigButton.addActionListener(this);
+
+        setLayout(new GridLayout(6, 1));
+        add(birdButton);
+        add(catButton);
+        add(dogButton);
+        add(rabbitButton);
+        add(pigButton);
+        add(selectedPetLabel);
+
+        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == birdButton) {
+            selectedPetLabel.setText("Selected Pet: Bird");
+        } else if (e.getSource() == catButton) {
+            selectedPetLabel.setText("Selected Pet: Cat");
+        } else if (e.getSource() == dogButton) {
+            selectedPetLabel.setText("Selected Pet: Dog");
+        } else if (e.getSource() == rabbitButton) {
+            selectedPetLabel.setText("Selected Pet: Rabbit");
+        } else if (e.getSource() == pigButton) {
+            selectedPetLabel.setText("Selected Pet: Pig");
+        }
+    }
+
+    public static void main(String[] args) {
+        new RadioButtonDemo();
+    }
+}
+```
